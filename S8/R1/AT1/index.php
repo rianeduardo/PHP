@@ -21,38 +21,55 @@
             margin: 20px 50px;
         }
 
-        h1,
-        h2,
-        p {
-            margin: 10px 0px;
+        hr {
+            margin: 20px 0px;
         }
     </style>
 </head>
 
 <body>
-    <h1>Batalha de EMPRESAS! [ XPTO ] vs [ XYZ ]</h1>
+    <h1>Batalha de EMPRESAS! XPTO vs XYZ</h1>
     <hr>
     <h2>Comparação de PORTE:</h2>
     <?php
     $funcionariosXpto = 5340; // Numero de funcionarios da XPTO
     $funcionariosXyz = 4032; // Numero de funcionarios da XYZ
 
-    // Calcular porte das empresas
+    // Função para calcular o porte da empresa com base no número de funcionários
+    // Recebe um parâmetro inteiro (número de funcionários) e retorna uma string
     function calcularPorte(int $funcionarios)
     {
-        if ($funcionarios < 1500) {
+        if ($funcionarios < 1500) { // Se o parametro for menor que 1500
             return "Pequeno porte";
-        } else if ($funcionarios < 3000) {
+        } else if ($funcionarios < 3000) { // Se for menor que 3000
             return "Médio porte";
-        } else {
+        } else { // Se não bater as anteriores
             return "Grande porte";
         }
     }
 
+    // Função para exibir informações da empresa
+    // Recebe parâmetros: nome da empresa e número de funcionários
+    // Não retorna valor nenhum, apenas exibe na tela
+    function exibirEmpresa($nome, $funcionarios)
+    {
+        echo "<h3>Empresa: $nome</h3>";
+        echo "<p>Número de funcionários: $funcionarios</p>";
+        $porte = calcularPorte($funcionarios); // Reutilizando a função calcularPorte
+        echo "<p>Porte: $porte</p>";
+        echo "<hr>";
+    }
+
+    // Chamando a função para exibir as empresas
+    exibirEmpresa("XPTO", $funcionariosXpto);
+    exibirEmpresa("XYZ", $funcionariosXyz);
+
     echo "<p>A empresa XPTO tem $funcionariosXpto, uma empresa de... " . calcularPorte($funcionariosXpto) . "!</p>";
     echo "<p>A empresa XYZ tem $funcionariosXyz, uma empresa de... " . calcularPorte($funcionariosXyz) . "!</p>";
 
-    echo "<br><p><i>Temos um empate!</i></p>"
+    echo "<br><p><i>Temos um empate!</i></p>";
+
+    echo "<hr>";
     ?>
 </body>
 
